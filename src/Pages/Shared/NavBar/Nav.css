@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
+
+.nav-logo{
+    font-size: 45px;
+    font-family: 'Festive', cursive;
+}
+.nav-color{
+    color: #CE835A;
+}
+.link-title{
+    font-weight: bolder;
+    transition: .5s;
+    color: rgb(0, 0, 0);
+}
+.link-title:hover{
+    color: rgb(143, 5, 5);
+    /* border-bottom: 1.02px solid rgb(221, 39, 39); */
+    overflow: hidden;
+}
