@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import './products.css';
 const LimitedProducts = () => {
@@ -24,7 +25,7 @@ const LimitedProducts = () => {
                 {
 
                     products.slice(0, 6).map(product =>
-                        <div className="col-12 col-md-4 text-center">
+                        <div key={product._id} className="col-12 col-md-4 text-center">
 
                             <div className="  h-100 card-container ">
 
@@ -32,7 +33,7 @@ const LimitedProducts = () => {
                                     <img src={product.img} alt="products img" className="card-img img-fluid" />
                                 </div>
 
-                                <div className="card-body">
+                                <div className="card-body text-center">
                                     <h3 className="card-title fw-bold text-dark">{product.name}</h3>
                                     <div className="card-text">
 

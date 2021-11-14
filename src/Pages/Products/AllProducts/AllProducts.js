@@ -26,12 +26,12 @@ const AllProducts = () => {
                     {
 
                         products.map(product =>
-                            <div className="col-12 col-md-4 text-center ">
+                            <div key={product._id} className="col-12 col-md-4 text-center ">
 
                                 <div className="h-100 card-container shadow-lg rounded-3 ">
 
                                     <div className="img-container">
-                                        <img src={product.img} alt="products img" style={{ height: 310, objectFit: 'cover' }} className="card-img img-fluid" />
+                                        <img src={product.img} alt="products img" style={{}} className="card-img img-fluid" />
                                     </div>
 
                                     <div className="card-body">

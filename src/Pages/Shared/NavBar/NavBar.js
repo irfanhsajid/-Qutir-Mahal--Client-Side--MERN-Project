@@ -16,15 +16,15 @@ const NavBar = () => {
                     <Navbar.Collapse className="justify-content-start">
                         <Nav.Link className="link-title" as={Link} to='/home'>HOME</Nav.Link>
                         <Nav.Link className="link-title" as={Link} to='/products'>PRODUCTS</Nav.Link>
+
+
+
+                        {
+                            user.email && <Nav.Link className="link-title" as={Link} to='/dashboard'>DASHBOARD</Nav.Link>
+
+                        }
+
                         <Nav.Link className="link-title" as={Link} to='/reveiws'>REVEIWS</Nav.Link>
-
-
-                        {/* {
-                            user.email ? <Nav.Link className="link-title" as={Link} to='/orders'>My Orders</Nav.Link> :
-                                " "
-                        } */}
-
-
                         {
                             user?.email ?
                                 <Button onClick={logOut} className="px-3 rounded-1 py-0 mx-2" variant="dark">Log Out </Button> :

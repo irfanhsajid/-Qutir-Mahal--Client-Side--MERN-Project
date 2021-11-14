@@ -18,10 +18,10 @@ const Register = () => {
     }
     const handleLoginSubmit = e => {
         if (loginData.password !== loginData.password2) {
-            alert('Your password did not match');
-            return
+            alert('Your Password Did not Match, Try again !!')
+            return;
         }
-        registerUser(loginData.email, loginData.password, loginData.firstname, history);
+        registerUser(loginData.email, loginData.password, loginData.lastname, history);
         e.preventDefault();
     }
     return (
@@ -32,13 +32,13 @@ const Register = () => {
                     !isLoading && <form onSubmit={handleLoginSubmit} className="form-inputField mb-3">
                         <input className="border-0" onBlur={handleOnBlur} type="name" name="firstname" placeholder="First Name" />
                         <br />
-                        <input className="border-0" onBlur={handleOnBlur} type="name" name="lastname" placeholder="Last Name" />
+                        <input className="border-0" onBlur={handleOnBlur} type="name" name="lastname" placeholder="Last Name" required />
                         <br />
-                        <input className="border-0" onBlur={handleOnBlur} type="email" name="email" placeholder="Your Email" />
+                        <input className="border-0" onBlur={handleOnBlur} type="email" name="email" placeholder="Your Email" required />
                         <br />
-                        <input className="border-0" onBlur={handleOnBlur} type="password" name="password" id="" placeholder="Your Password" />
+                        <input className="border-0" onBlur={handleOnBlur} type="password" name="password" id="" placeholder="Your Password" required />
                         <br />
-                        <input className="border-0" onBlur={handleOnBlur} type="password" name="password2" id="" placeholder="Re-Enter Password" />
+                        <input className="border-0" onBlur={handleOnBlur} type="password" name="password2" id="" placeholder="Re-Enter Password" required />
                         <br />
                         <input className="submit d-flex m-auto btn rounded-2 w-auto text-center px-4 py-1 " type="submit" value="Submit" />
                     </form>

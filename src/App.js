@@ -13,6 +13,7 @@ import AuthProvider from './Pages/Login-Register/Contexts/AuthProvider';
 import AllProducts from './Pages/Products/AllProducts/AllProducts';
 import PrivateRoute from './Pages/Login-Register/PrivateRoute/PrivateRoute';
 import ProductDetails from './Pages/Products/ProductDetails/ProductDetails';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -26,12 +27,15 @@ function App() {
             <Route exact path='/home'>
               <Home></Home>
             </Route>
-            <PrivateRoute exact path='/products'>
-              <AllProducts></AllProducts>
-            </PrivateRoute>
-            <Route exact path="/productDetails/:productId">
-              <ProductDetails></ProductDetails>
+            <Route exact path='/dashboard'>
+              <Dashboard></Dashboard>
             </Route>
+            <Route exact path='/products'>
+              <AllProducts></AllProducts>
+            </Route>
+            <PrivateRoute exact path="/productDetails/:productId">
+              <ProductDetails></ProductDetails>
+            </PrivateRoute>
             <Route exact path='/login'>
               <Login></Login>
             </Route>

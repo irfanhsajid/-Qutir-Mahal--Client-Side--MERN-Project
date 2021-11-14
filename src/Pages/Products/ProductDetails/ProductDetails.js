@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
+import useAuth from '../../Login-Register/Hooks/useAuth';
 import NavBar from '../../Shared/NavBar/NavBar';
-
+import './Details.css'
 const ProductDetails = () => {
+    const { user } = useAuth();
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -23,8 +25,8 @@ const ProductDetails = () => {
             <NavBar />
             <div className="details-container my-5 row g-4 justify-content-center">
                 <div className="details-left col-12 col-md-5">
-                    <div className="details-img w-100">
-                        <img className="img-fluid" style={{ height: '70vh', objectFit: 'cover' }} src={detailsInfo[0]?.img} alt="" />
+                    <div className=" w-100">
+                        <img className="img-fluid details-img" src={detailsInfo[0]?.img} alt="" />
                     </div>
                 </div>
                 <div className="details-right  col-12 col-md-7">
@@ -37,21 +39,30 @@ const ProductDetails = () => {
                         <p><b>Brand : </b> {detailsInfo[0]?.brand} </p>
                     </div>
                     <p className="border-bottom border-2 d-flex mx-auto w-75"></p>
-                    <p>
+                    <div>
                         <h5 className="fw-bold text-center">SURE TO BUY? <span className="text-danger">FILL</span> THE FORM AND <span className="text-danger">PRESS</span> THE BUTTON</h5>
-                    </p>
+                    </div>
                     <div className="order-form" >
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <input
-                                {...register("name")}
-                                placeholder="Your Name"
+                                {...register("productName")}
+                                value={detailsInfo[0]?.name}
                                 className="px-3 py-2 m-2 w-100"
+                                style={{ color: 'green' }}
+
                             />
                             <br />
                             <input
                                 {...register("email")}
                                 required type='email'
-                                placeholder="Your Email"
+                                value={user.email}
+                                className="px-3 py-2 m-2 w-100"
+
+                            />
+                            <br />
+                            <input
+                                {...register("name", { required: true })}
+                                placeholder="Your Name"
                                 className="px-3 py-2 m-2 w-100"
                             />
                             <br />
@@ -68,7 +79,7 @@ const ProductDetails = () => {
                                 className="px-3 py-2 m-2 w-100"
                             />
                             <br />
-                            <select {...register("product", { required: true })} className="px-3 py-2 m-2 w-100">
+                            <select {...register("payment", { required: true })} className="px-3 py-2 m-2 w-100">
                                 <option value="bKash">bKash</option>
                                 <option value="Nagad">Nagad</option>
                                 <option value="VisaCard">VisaCard</option>
@@ -76,7 +87,7 @@ const ProductDetails = () => {
                             </select>
                             <br />
                             {errors.exampleRequibKash && <span>This field is requibKash</span>}
-                            <input type="submit" value="Place Order" className=" ms-2 w-100 btn btn-dark text-center px-3 py-2 my-3 confirm-btn" />
+                            <input type="submit" value="Place Order" className=" ms-2 w-100 btn btn-dark text-center px-3 py-2 my-3" />
                         </form>
                     </div>
                 </div>

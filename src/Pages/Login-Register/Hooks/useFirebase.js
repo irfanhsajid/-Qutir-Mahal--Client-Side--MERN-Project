@@ -16,12 +16,12 @@ const useFirebase = () => {
 
 
     //new user registration 
-    const registerUser = (email, password, firstname, history) => {
+    const registerUser = (email, password, lastname, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
-                const newUser = { email, displayName: firstname }
+                const newUser = { email, displayName: lastname }
                 setUser(newUser);
                 history.replace('/');
             })
@@ -35,6 +35,7 @@ const useFirebase = () => {
     //user login via email-password
     const loginUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
+
 
     }
 

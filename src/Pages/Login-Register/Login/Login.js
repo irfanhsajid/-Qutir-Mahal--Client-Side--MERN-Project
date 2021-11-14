@@ -10,13 +10,14 @@ const Login = () => {
     const { user, setUser, loginUser, isLoading, setIsLoading, authError, setAuthError, signInWithGoogle } = useAuth();
     const location = useLocation();
     const history = useHistory();
-    const destination = location.state?.from || "/";
 
-    const handleOnChange = e => {
+
+    const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
         const newLoginData = { ...loginData };
         newLoginData[field] = value;
+        console.log(newLoginData);
         setLoginData(newLoginData);
     }
     const handleLoginSubmit = e => {
@@ -24,7 +25,9 @@ const Login = () => {
         loginUser(loginData.email, loginData.password)
             .then((result) => {
                 setIsLoading(true);
-                setUser(result.user)
+                console.log(result.user);
+                setUser(result.user);
+                const destination = location.state?.from || "/";
                 history.replace(destination);
                 setAuthError('');
             })
@@ -32,6 +35,7 @@ const Login = () => {
                 setAuthError(error.message);
             })
             .finally(() => setIsLoading(false));
+
     }
     const handleGoogleLogin = () => {
         signInWithGoogle(location, history);
@@ -43,11 +47,20 @@ const Login = () => {
                 <div className="row justify-content-center align-items-center login-form">
                     <div className="form-left col-md-5 col-12">
                         <h5 className="text-center fw-bold">Login first to buy any product</h5>
+
                         <form onSubmit={handleLoginSubmit} className="my-2 form-inputField">
-                            <input className="border-0" onBlur={handleOnChange} type="email" placeholder="Your email" /> <br />
-                            <input className="border-0" onBlur={handleOnChange} type="password" placeholder="Your Password" />
+
+                            <input className="border-0" onBlur={handleOnBlur} type="email"
+                                name="email" placeholder="Your email" /> <br />
+
+                            <input className="border-0" onBlur={handleOnBlur}
+                                name="password"
+                                type="password" placeholder="Your Password" />
                             <br />
+
                             <input className="login d-flex m-auto btn rounded-2 w-auto text-center px-4 py-1" type="submit" value="Login" />
+
+
                         </form>
                         {
                             isLoading && <Spinner animation="border" />
