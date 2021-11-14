@@ -1,4 +1,5 @@
 import React from 'react';
+import LimitedProducts from '../../Products/limitedProducts/LimitedProducts';
 import NavBar from '../../Shared/NavBar/NavBar';
 import Banner from '../Banner/Banner';
 
@@ -7,7 +8,7 @@ const Home = () => {
         <div>
             <NavBar />
             <Banner />
-
+            <LimitedProducts />
         </div>
     );
 };

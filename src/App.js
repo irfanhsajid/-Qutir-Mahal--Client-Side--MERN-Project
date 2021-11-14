@@ -10,8 +10,9 @@ import Login from './Pages/Login-Register/Login/Login';
 import Register from './Pages/Login-Register/Register/Register';
 import NotFound from './Pages/Error404/Notfound';
 import AuthProvider from './Pages/Login-Register/Contexts/AuthProvider';
-import Products from './Pages/Products/Products';
+import AllProducts from './Pages/Products/AllProducts/AllProducts';
 import PrivateRoute from './Pages/Login-Register/PrivateRoute/PrivateRoute';
+import ProductDetails from './Pages/Products/ProductDetails/ProductDetails';
 
 function App() {
   return (
@@ -26,8 +27,11 @@ function App() {
               <Home></Home>
             </Route>
             <PrivateRoute exact path='/products'>
-              <Products></Products>
+              <AllProducts></AllProducts>
             </PrivateRoute>
+            <Route exact path="/productDetails/:productId">
+              <ProductDetails></ProductDetails>
+            </Route>
             <Route exact path='/login'>
               <Login></Login>
             </Route>
