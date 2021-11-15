@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { RatingView } from 'react-simple-star-rating';
 import NavBar from '../../Shared/NavBar/NavBar';
 
 const AllProducts = () => {
@@ -14,7 +15,7 @@ const AllProducts = () => {
             <NavBar />
             <div className="container my-5">
 
-                <div className="container my-5 text-center">
+                <div data-aos="fade-down-right" data-aos-duration="1000" className="container my-5 text-center">
                     <div className=" my-4">
                         <h2 className="title-bold-text">Trending Potteries And Handmade  Products</h2>
                     </div>
@@ -28,7 +29,7 @@ const AllProducts = () => {
                         products.map(product =>
                             <div key={product._id} className="col-12 col-md-4 text-center ">
 
-                                <div className="h-100 card-container shadow-lg rounded-3 ">
+                                <div data-aos="zoom-in" data-aos-duration="500" className="h-100 card-container shadow-lg rounded-3 ">
 
                                     <div className="img-container">
                                         <img src={product.img} alt="products img" style={{}} className="card-img img-fluid" />
@@ -37,6 +38,7 @@ const AllProducts = () => {
                                     <div className="card-body">
                                         <h3 className="card-title fw-bold text-dark">{product.name}</h3>
                                         <div className="card-text">
+                                            <RatingView ratingValue={product.rating} /* RatingView Props */ /> <br />
                                             <b className="text-dark">Price : {product.price}.00 /-</b>  &nbsp; &nbsp;
                                         </div>
                                         <Link to={`productDetails/${product._id}`}>

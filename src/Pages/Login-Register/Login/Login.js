@@ -46,7 +46,7 @@ const Login = () => {
             <div className="container mt-5 mb-5">
                 <div className="row justify-content-center align-items-center login-form">
                     <div className="form-left col-md-5 col-12">
-                        <h5 className="text-center fw-bold">Login first to buy any product</h5>
+                        <h5 className="text-center fw-bold mb-4">Login first to buy any product</h5>
 
                         <form onSubmit={handleLoginSubmit} className="my-2 form-inputField">
 

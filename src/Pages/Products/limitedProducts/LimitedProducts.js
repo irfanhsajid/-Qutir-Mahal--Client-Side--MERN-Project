@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
-
+import { RatingView } from 'react-simple-star-rating';
 import { Link } from 'react-router-dom';
 import './products.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 const LimitedProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -12,7 +16,7 @@ const LimitedProducts = () => {
     return (
 
         <div className="container my-5">
-            <div className="container my-5">
+            <div data-aos="fade-right" data-aos-duration="1000" className="container my-5">
                 <div className="border-start border-3 border-dark my-4">
                     <h2 className=" ms-3 abt-title">Trending, <span className="title-bold-text">Best Selling <br />
                         Pottery And</span> handmade <br /> Products.</h2>
@@ -29,13 +33,16 @@ const LimitedProducts = () => {
 
                             <div className="  h-100 card-container ">
 
-                                <div className="img-container">
+                                <div data-aos="zoom-in-up" data-aos-duration="1000" className="img-container">
                                     <img src={product.img} alt="products img" className="card-img img-fluid" />
                                 </div>
 
                                 <div className="card-body text-center">
                                     <h3 className="card-title fw-bold text-dark">{product.name}</h3>
                                     <div className="card-text">
+
+                                        <RatingView ratingValue={product.rating} /* RatingView Props */ /> <br />
+
 
                                         <b className="text-dark">Price : {product.price}.00 /-</b>  &nbsp; &nbsp;
 

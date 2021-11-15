@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { RatingView } from 'react-simple-star-rating';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import useAuth from '../../Login-Register/Hooks/useAuth';
 import NavBar from '../../Shared/NavBar/NavBar';
 import './Details.css'
+import { Spinner } from 'react-bootstrap';
 const ProductDetails = () => {
-    const { user } = useAuth();
+    const { user, isLoading } = useAuth();
     const { productId } = useParams();
     const [product, setProduct] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -17,11 +19,24 @@ const ProductDetails = () => {
     const detailsInfo = product.filter(data => data._id === productId);
 
     const onSubmit = data => {
-        console.log(data)
+        fetch(`https://hidden-citadel-95408.herokuapp.com/addOrder`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data),
+        })
+            .then(res => res.json())
+            .then(result => console.log(result))
+        console.log(data);
+        alert('Your Order is Successfully Done');
         reset();
     }
     return (
         <div className="container">
+
+            {
+                isLoading && <Spinner animation="border" />
+            }
+
             <NavBar />
             <div className="details-container my-5 row g-4 justify-content-center">
                 <div className="details-left col-12 col-md-5">
@@ -32,7 +47,8 @@ const ProductDetails = () => {
                 <div className="details-right  col-12 col-md-7">
                     <h1 className="title fw-bold text-center">{detailsInfo[0]?.name}</h1>
                     <p className="border-bottom border-2 d-flex mx-auto w-50"></p>
-                    <p className="">{detailsInfo[0]?.details}</p>
+                    <RatingView ratingValue={detailsInfo[0]?.rating} /* RatingView Props */ />
+                    <p className="">{detailsInfo[0]?.details}.</p>
                     <div className="text-center">
                         <p><b>Price : </b><span className="text-danger">{detailsInfo[0]?.price}.00 /-</span></p>
                         <p><small>Only {detailsInfo[0]?.stock}+ in stock</small></p>
@@ -44,14 +60,9 @@ const ProductDetails = () => {
                     </div>
                     <div className="order-form" >
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <input
-                                {...register("productName")}
-                                value={detailsInfo[0]?.name}
-                                className="px-3 py-2 m-2 w-100"
-                                style={{ color: 'green' }}
-
-                            />
-                            <br />
+                            <select {...register("productName", { required: true })} className="px-3 py-2 m-2 w-100">
+                                <option value={detailsInfo[0]?.name}>{detailsInfo[0]?.name}</option>
+                            </select>
                             <input
                                 {...register("email")}
                                 required type='email'
@@ -80,9 +91,9 @@ const ProductDetails = () => {
                             />
                             <br />
                             <select {...register("payment", { required: true })} className="px-3 py-2 m-2 w-100">
+                                <option value="VisaCard">VisaCard</option>
                                 <option value="bKash">bKash</option>
                                 <option value="Nagad">Nagad</option>
-                                <option value="VisaCard">VisaCard</option>
                                 <option value="uPay">uPay</option>
                             </select>
                             <br />

@@ -19,7 +19,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <div className="banner-div">
+                        <div data-aos="zoom-in-left" data-aos-duration="1000" className="banner-div">
                             <div className="text-dark">   <h1 className="slider-title">ANTIQUE POTTERY</h1>
                                 <p className="my-3"> In touch with your heart. Let's get our hands dirty.</p>
                             </div>
@@ -27,7 +27,7 @@ const Banner = () => {
                         </div>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item interval={1000} >
+                <Carousel.Item interval={1500} >
                     <img
                         className="d-block w-100 banner-img"
                         src={slider1}
@@ -35,13 +35,13 @@ const Banner = () => {
                     />
                     <Carousel.Caption >
 
-                        <div className="text-dark">  <h1 className="slider-title">POTTERY <br /> MADE WITH LOVE</h1>
+                        <div data-aos="zoom-in-right" className="text-dark">  <h1 className="slider-title">POTTERY <br /> MADE WITH LOVE</h1>
                             <p p className="my-3"> A field of clay touched by the genius of man beconmes a castle </p>
                         </div>
                         <Link to="/products"> <button className=" banner-btn  rounded-1">Shop Now</button></Link>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item interval={1500}>
+                <Carousel.Item interval={1800} >
                     <img
                         className="d-block w-100 banner-img"
                         src={slider3}
@@ -49,7 +49,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <div className="banner-div3">
+                        <div data-aos="zoom-in-left" className="banner-div3">
                             <div className="text-dark">
                                 <h1 className="slider-title">PORCELAIN VASES</h1>
                                 <p className="my-3"> In touch with your heart. Let's get our hands dirty.</p>

@@ -6,7 +6,7 @@ import useAuth from '../../Login-Register/Hooks/useAuth';
 import './Nav.css';
 
 const NavBar = () => {
-    const { user, logOut } = useAuth()
+    const { user, logOut } = useAuth();
     return (
         <div>
             <Navbar sticky="top" collapseOnSelect expand="lg" bg="light" variant="light">
