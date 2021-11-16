@@ -17,6 +17,8 @@ import Payment from '../Payment/Payment';
 import Review from '../Review/Review';
 import AddProduct from '../AddProduct/AddProduct';
 import AdminRoute from '../../Login-Register/AdminRoute/AdminRoute';
+import ManageOrders from '../ManageOrders/ManageOrders';
+import ManageAllProducts from '../ManageAllProducts.js/ManageAllProducts';
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
@@ -36,18 +38,21 @@ const Dashboard = () => {
                     <ul className="my-5">
                         <li> <i className="fas fa-home me-1"></i> <Link to='/home'>Home</Link> </li>
                         <li> <Link to={url}></Link> </li>
-                        <li><i className="fas fa-list me-1"></i> <Link to={`${url}/orders`}>My Orders</Link> </li>
+
 
                         {
                             !admin && <>
                                 <li> <i className="fas fa-money-check-alt me-1"></i> <Link to={`${url}/payment`}>Payment</Link> </li>
+                                <li><i className="fas fa-list me-1"></i> <Link to={`${url}/orders`}>My Orders</Link> </li>
                                 <li> <i className="fas fa-star me-1"></i> <Link to={`${url}/review`}>Reveiw Item</Link> </li>
                             </>
                         }
                         {
                             admin && <>
                                 <li> <i className="fas fa-user me-1"></i> <Link to={`${url}/makeAdmin`}>Make Admin</Link> </li>
+                                <li> <i className="fas fa-list me-1"></i> <Link to={`${url}/manageOrders`}>Manage Orders</Link> </li>
                                 <li> <i className="fas fa-add me-1"></i> <Link to={`${url}/addProduct`}>Add a Product</Link> </li>
+                                <li> <i class="fas fa-align-left me-1"></i> <Link to={`${url}/manageProducts`}>Manage Products</Link> </li>
 
                             </>
                         }
@@ -81,6 +86,12 @@ const Dashboard = () => {
 
                             <AdminRoute path={`${path}/addProduct`}>
                                 <AddProduct></AddProduct>
+                            </AdminRoute>
+                            <AdminRoute path={`${path}/manageOrders`}>
+                                <ManageOrders></ManageOrders>
+                            </AdminRoute>
+                            <AdminRoute path={`${path}/manageProducts`}>
+                                <ManageAllProducts></ManageAllProducts>
                             </AdminRoute>
 
 

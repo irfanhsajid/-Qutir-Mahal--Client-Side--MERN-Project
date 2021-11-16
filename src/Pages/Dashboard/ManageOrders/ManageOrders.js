@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
+import { Spinner, Table } from 'react-bootstrap';
 import useAuth from '../../Login-Register/Hooks/useAuth';
 
-const MyOrders = () => {
-    const { user } = useAuth();
+
+const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     const [isDeleted, setIsDeleted] = useState(null);
+    const [isLoading] = useAuth();
     useEffect(() => {
-        fetch(`https://hidden-citadel-95408.herokuapp.com/orders/${user.email}`)
+        fetch("https://hidden-citadel-95408.herokuapp.com/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [isDeleted, user.email]);
+    }, [isDeleted]);
     //delete method 
     const handleDelete = (id) => {
         console.log(id);
@@ -30,9 +31,12 @@ const MyOrders = () => {
             });
         alert('Are You sure to DELETE?');
     };
+    if (isLoading) {
+        return <Spinner animation="border"></Spinner>
+    }
     return (
         <div className='container my-4'>
-            <h3 className="text-center text-danger mb-4 fw-bold"> Total Orders : {orders.length}</h3>
+            <h3 className="text-center text-danger mb-4 fw-bold"> Total Orders Found : {orders.length}</h3>
             <Table striped bordered hover responsive>
                 <thead>
                     <tr className="text-primary">
@@ -65,4 +69,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default ManageOrders;

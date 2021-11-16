@@ -11,6 +11,7 @@
         font-size: 35px;
     }
     .explore-btn{
+        display: none;
         margin-left: 20px;
        
     }
