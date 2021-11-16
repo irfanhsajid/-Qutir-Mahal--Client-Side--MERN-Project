@@ -16,3 +16,12 @@
     color: #F84C4C;
     overflow: hidden;
 }
+.user-name{
+    text-decoration: none;
+    color: #ce6d38;
+    
+}
+.fa-user-circle{
+    margin-top: 2px;
+    font-size: 20px;
+}

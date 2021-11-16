@@ -48,20 +48,22 @@ const Login = () => {
                     <div className="form-left col-md-5 col-12">
                         <h5 className="text-center fw-bold mb-4">Login first to buy any product</h5>
 
-                        <form onSubmit={handleLoginSubmit} className="my-2 form-inputField">
+                        {
+                            !isLoading && <form onSubmit={handleLoginSubmit} className="my-2 form-inputField">
 
-                            <input className="border-0" onBlur={handleOnBlur} type="email"
-                                name="email" placeholder="Your email" /> <br />
+                                <input className="border-0" onBlur={handleOnBlur} type="email"
+                                    name="email" placeholder="Your email" /> <br />
 
-                            <input className="border-0" onBlur={handleOnBlur}
-                                name="password"
-                                type="password" placeholder="Your Password" />
-                            <br />
+                                <input className="border-0" onBlur={handleOnBlur}
+                                    name="password"
+                                    type="password" placeholder="Your Password" />
+                                <br />
 
-                            <input className="login d-flex m-auto btn rounded-2 w-auto text-center px-4 py-1" type="submit" value="Login" />
+                                <input className="login d-flex m-auto btn rounded-2 w-auto text-center px-4 py-1" type="submit" value="Login" />
 
 
-                        </form>
+                            </form>
+                        }
                         {
                             isLoading && <Spinner animation="border" />
                         }

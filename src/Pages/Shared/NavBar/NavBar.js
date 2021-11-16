@@ -27,12 +27,12 @@ const NavBar = () => {
                         <Nav.Link className="link-title" as={Link} to='/reveiws'>REVEIWS</Nav.Link>
                         {
                             user?.email ?
-                                <Button onClick={logOut} className="px-3 rounded-1 py-0 mx-2" variant="dark">Log Out </Button> :
+                                <Button onClick={logOut} className="px-3 user-name rounded-1 py-0 mx-2" variant="light"><i class="fas fa-2x fa-sign-out-alt"></i> </Button> :
                                 <Nav.Link className="link-title" as={Link} to='/login'>LOGIN</Nav.Link>
 
                         }
-                        <Navbar.Text className="nav-color">
-                            <a className="nav-color ms-2" href="#login">{user.displayName}</a>
+                        <Navbar.Text className="">
+                            <a className=" user-name ms-1" href="#login"><span className="user-name fw-bold"> <i className="far fa-user-circle  me-2"></i>{user.displayName}</span> </a>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>

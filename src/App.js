@@ -13,7 +13,7 @@ import AuthProvider from './Pages/Login-Register/Contexts/AuthProvider';
 import AllProducts from './Pages/Products/AllProducts/AllProducts';
 import PrivateRoute from './Pages/Login-Register/PrivateRoute/PrivateRoute';
 import ProductDetails from './Pages/Products/ProductDetails/ProductDetails';
-import Dashboard from './Pages/Dashboard/Dashboard';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (

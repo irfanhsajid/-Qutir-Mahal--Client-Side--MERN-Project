@@ -49,7 +49,7 @@ const LimitedProducts = () => {
 
                                     </div>
                                     <Link to='/products'>
-                                        <button className="banner-btn border-1 rounded-1 mt-2 me-3">Explore More </button>
+                                        <button className="banner-btn border-1 rounded-1 mt-2 me-3 explore-btn">Explore More </button>
                                     </Link>
                                     <Link to={`productDetails/${product._id}`}>
                                         <button className="banner-btn border-1 rounded-1 mt-2">+ Add To Cart</button>

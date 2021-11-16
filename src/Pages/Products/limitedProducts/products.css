@@ -4,9 +4,15 @@
     color: #000000;
 }
 
+
+
 @media screen and (max-width:600px) {
     .title-bold-text{
         font-size: 35px;
+    }
+    .explore-btn{
+        margin-left: 20px;
+       
     }
    
 }
