@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Spinner, Table } from 'react-bootstrap';
-import useAuth from '../../Login-Register/Hooks/useAuth';
+import { Table } from 'react-bootstrap';
 
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     const [isDeleted, setIsDeleted] = useState(null);
-    const [isLoading] = useAuth();
+
     useEffect(() => {
         fetch("https://hidden-citadel-95408.herokuapp.com/orders")
             .then(res => res.json())
@@ -31,12 +30,10 @@ const ManageOrders = () => {
             });
         alert('Are You sure to DELETE?');
     };
-    if (isLoading) {
-        return <Spinner animation="border"></Spinner>
-    }
+
     return (
         <div className='container my-4'>
-            <h3 className="text-center text-danger mb-4 fw-bold"> Total Orders Found : {orders.length}</h3>
+            <h2 data-aos="fade-down-left" data-aos-duration="1000" className="text-center mb-4 fw-bold"> Total <span className="text-danger">{orders.length}</span> Orders Found </h2>
             <Table striped bordered hover responsive>
                 <thead>
                     <tr className="text-primary">
