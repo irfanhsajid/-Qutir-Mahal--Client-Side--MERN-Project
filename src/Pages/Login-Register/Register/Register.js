@@ -31,7 +31,7 @@ const Register = () => {
     return (
         <>
             <NavBar />
-            <div className="container my-5 ">
+            <div className="container my-5 " data-aos="fade-down-right" data-aos-duration="500">
                 <div className="register-form mx-auto w-75">
                     <h3 className="fw-bold text-center my-3">Register : Create Account</h3>
                     {

@@ -3,6 +3,12 @@
     font-weight: bolder;
     color: #000000;
 }
+a{
+    text-decoration: none;
+}
+.card-title{
+    text-decoration: none;
+}
 
 
 

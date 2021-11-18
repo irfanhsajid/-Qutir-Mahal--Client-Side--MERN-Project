@@ -46,7 +46,7 @@ const Login = () => {
             <NavBar></NavBar>
             <div className="container mt-5 mb-5">
                 <div className="row justify-content-center align-items-center login-form">
-                    <div className="form-left col-md-5 col-12">
+                    <div className="form-left col-md-5 col-12" data-aos="fade-up-right" data-aos-duration="1000">
                         <h5 className="text-center fw-bold mb-4">Login first to buy any product</h5>
 
                         {
@@ -81,7 +81,8 @@ const Login = () => {
                         <button onClick={handleGoogleLogin} className="btn-dark text-warning px-3 py-1 border-0 rounded-2 d-flex mx-auto">Google Sign In</button>
 
                     </div>
-                    <div className="form-right col-md-7 col-12">
+                    <div className="form-right col-md-7 col-12" data-aos="fade-up-left" data-aos-easing="linear"
+                        data-aos-duration="900">
                         <img className="img-fluid login-img" src={loginImg} alt="" />
                     </div>
                 </div>

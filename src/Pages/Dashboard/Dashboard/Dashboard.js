@@ -43,15 +43,16 @@ const Dashboard = () => {
                         {
                             !admin && <>
                                 <li> <i className="fas fa-money-check-alt me-1"></i> <Link to={`${url}/payment`}>Payment</Link> </li>
-                                <li><i className="fas fa-list me-1"></i> <Link to={`${url}/orders`}>My Orders</Link> </li>
+                                <li><i className="fas fa-shopping-cart me-1"></i> <Link to={`${url}/orders`}>My Orders</Link> </li>
                                 <li> <i className="fas fa-star me-1"></i> <Link to={`${url}/review`}>Reveiw Item</Link> </li>
                             </>
                         }
                         {
                             admin && <>
                                 <li> <i className="fas fa-user me-1"></i> <Link to={`${url}/makeAdmin`}>Make Admin</Link> </li>
-                                <li> <i className="fas fa-list me-1"></i> <Link to={`${url}/manageOrders`}>Manage Orders</Link> </li>
+
                                 <li> <i className="fas fa-add me-1"></i> <Link to={`${url}/addProduct`}>Add a Product</Link> </li>
+                                <li> <i className="fas fa-list me-1"></i> <Link to={`${url}/manageOrders`}>Manage Orders</Link> </li>
                                 <li> <i class="fas fa-align-left me-1"></i> <Link to={`${url}/manageProducts`}>Manage Products</Link> </li>
 
                             </>

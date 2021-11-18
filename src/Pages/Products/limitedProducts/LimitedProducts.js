@@ -15,7 +15,7 @@ const LimitedProducts = () => {
     }, []);
     return (
 
-        <div className="container my-5">
+        <div className="container-fluid my-5">
             <div data-aos="fade-right" data-aos-duration="1000" className="container my-5">
                 <div className="border-start border-3 border-dark my-4">
                     <h2 className=" ms-3 abt-title">Trending, <span className="title-bold-text">Best Selling <br />
@@ -31,7 +31,7 @@ const LimitedProducts = () => {
                     products.slice(0, 6).map(product =>
                         <div key={product._id} className="col-12 col-md-4 text-center">
 
-                            <div className="  h-100 card-container ">
+                            <div className=" h-100 card-container ">
 
                                 <div data-aos="zoom-in-up" data-aos-duration="1000" className="img-container">
                                     <img src={product.img} alt="products img" className="card-img img-fluid" />

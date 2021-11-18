@@ -41,11 +41,13 @@ const MakeAdmin = () => {
             });
     }
     return (
-        <div className="text-center">
-            <h2>Make a new user Admin</h2>
+        <div className="text-center" data-aos="fade-down"
+
+            data-aos-duration="500" >
+            <h1>Make a new Admin</h1>
             <form onSubmit={handleAdminSubmit}>
                 <input onBlur={handleOnBlur} className="p-2 border-1 border-bottom border-primary w-50" type="email" name="email" id="" placeholder="Enter Admin Email" /> <br />
-                <input className="m-2 btn btn-primary" type="submit" value="Make Admin" />
+                <input className="m-2 btn btn-primary w-25" type="submit" value="Make Admin" />
             </form>
         </div>
     );
