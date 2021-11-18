@@ -19,8 +19,9 @@ const Reviews = () => {
                         reviews.map(review =>
 
                             <div key={review._id} className="col-12 mx-3 col-md-5 review-card rounded-3 text-center  p-3 ">
-                                <h5 className="fw-bold nav-color">{review.userName}</h5>
+                                <h4 className="fw-bold nav-color">{review.userName}</h4>
                                 <p data-aos="zoom-in" data-aos-duration="1000" className="review-text">{review.review}</p>
+                                <p><b><small className="text-danger">{review.productName}</small></b></p>
                                 <RatingView ratingValue={review.rate} /* RatingView Props */ />
                             </div>
 
