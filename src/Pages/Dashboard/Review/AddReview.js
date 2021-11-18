@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-
+import './review.css';
 import swal from 'sweetalert';
-const AddProduct = () => {
+import useAuth from '../../Login-Register/Hooks/useAuth';
+const AddReview = () => {
+    const { user } = useAuth();
     const [inputData, setInputData] = useState({});
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -13,7 +15,7 @@ const AddProduct = () => {
     }
     const handleReviewSubmit = (e) => {
         e.preventDefault();
-        fetch(`https://hidden-citadel-95408.herokuapp.com/addProduct`, {
+        fetch(`https://hidden-citadel-95408.herokuapp.com/addReview`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(inputData),
@@ -21,17 +23,18 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(result => console.log(result))
         console.log(inputData);
-        swal("Done!", "Successfully Added Product To the Database", "success");
+        swal("Thank You", "Your Review Submitted!", "success");
         e.target.reset();
     }
 
     return (
         <div className="text-center">
-            <h2 data-aos="fade-right" data-aos-duration="1000" className="fw-bold">Add a New Product</h2>
-            <p className="border-bottom border-2 my-3 d-flex mx-auto w-50"></p>
+            <h2 data-aos="fade-right" data-aos-duration="1000" className="fw-bold">Feel Free to Review Our Products </h2>
+            <p className="border-bottom border-2 my-3 d-flex mx-auto w-75"></p>
             <div className="review-form form-bg py-2  ">
-                <form className="form-container mt-2" onSubmit={handleReviewSubmit}>
-                    <select required onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1" name="name" id="">
+                <form className="form-container" onSubmit={handleReviewSubmit}>
+                    <input onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1  " type="text" name="userName" id="" placeholder="Your Name" value={user?.displayName} required /> <br />
+                    <select required onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1" name="productName" id="">
                         <option selected disabled>Product Name</option>
                         <option value="Marble Vase">Marble Vase</option>
                         <option value="Terrakota Vase">Terrakota Vase</option>
@@ -46,20 +49,18 @@ const AddProduct = () => {
                         <option value="Bamboo Vase">Bamboo Vase</option>
                     </select>
                     <br />
-                    <input onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1 " type="text" name="brand" id="" placeholder="Brand Name" required /> <br />
-                    <input onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1 " type="number" name="price" id="" placeholder="Product Price" required /> <br />
-                    <input onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1 " type="number" name="stock" id="" placeholder="Availability in Stock" required /> <br />
-                    <select required onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1" name="rating" id="">
-                        <option value="Add Product Rating" selected disabled>Add Product Rating</option>
+
+                    <select onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1" name="rate" id="" required>
+                        <option selected disabled>Rate Product</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="3.5">3.5</option>
                         <option value="4">4</option>
+                        <option value="4.5">4.5</option>
                         <option value="5">5</option>
                     </select>
                     <br />
-                    <input onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1 " type="text" name="img" id="" placeholder="Product Image URL-( i.e: https://i.ibb.co/River-Vase.jpg)" required /> <br />
-
-                    <textarea onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1" name="details" id="" cols="15" rows="5" placeholder="Product Description" required></textarea> <br />
+                    <textarea onBlur={handleOnBlur} className=" px-4 py-2 m-2 border-0  rounded-1" name="review" id="" cols="15" rows="5" placeholder="Share your opinion here..." required></textarea> <br />
                     <input type="submit" value="SUBMIT" className=" btn-light my-1 border-0 px-4 py-2 fw-bold rounded-1" style={{ letterSpacing: '2px' }}></input>
                 </form>
             </div>
@@ -67,4 +68,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default AddReview;

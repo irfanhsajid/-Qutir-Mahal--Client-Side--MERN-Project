@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import useAuth from '../../Login-Register/Hooks/useAuth';
-
+import swal from 'sweetalert';
 const MyOrders = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
@@ -14,25 +14,40 @@ const MyOrders = () => {
     //delete method 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`https://hidden-citadel-95408.herokuapp.com/deleteOrder/${id}`, {
-            method: "DELETE",
-            headers: { "content-type": "application/json" }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover, You've to Order It Again Manually!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(result => {
-                // console.log(result.deletedCount)
-                if (result.deletedCount) {
-                    setIsDeleted(true)
-                }
-                else {
-                    setIsDeleted(false)
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! Your Order has been deleted!", {
+                        icon: "success",
+                    });
+                    fetch(`https://hidden-citadel-95408.herokuapp.com/deleteOrder/${id}`, {
+                        method: "DELETE",
+                        headers: { "content-type": "application/json" }
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            // console.log(result.deletedCount)
+                            if (result.deletedCount) {
+                                setIsDeleted(true)
+                            }
+                            else {
+                                setIsDeleted(false)
+                            }
+                        });
+                } else {
+                    swal("Your Order is unchanged!");
                 }
             });
-        alert('Are You sure to DELETE?');
     };
     return (
         <div className='container my-4'>
-            <h3 className="text-center text-danger mb-4 fw-bold"> Total Orders : {orders.length}</h3>
+            <h3 data-aos="fade-up" data-aos-duration="1500" className="text-center text-danger mb-4 fw-bold"> Total Orders : {orders.length}</h3>
             <Table striped bordered hover responsive>
                 <thead>
                     <tr className="text-primary">

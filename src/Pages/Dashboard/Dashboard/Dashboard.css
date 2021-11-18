@@ -1,6 +1,8 @@
-
+.dash-bar{
+    background: #181717ea;
+}
 .dash-left{
-    background-color: #F84C4C;
+    background-color: #D9873E;
     height: 100vh;
     z-index: 1;
 }
@@ -21,13 +23,13 @@ li a:hover{
 .dashboard-text h1{
     font-weight: bold;
 }
-@media screen and (max-width:600px) {
-    h2{
-        text-align: center;
+@media screen and (max-width:980px) {
+    .dash-bar{
+        display: none;
     }
     .dash-left{
-        margin-top: 10px;
-        height: 200px;
+       
+        height: 50%;
     }
     ul li{
         display: inline-block;

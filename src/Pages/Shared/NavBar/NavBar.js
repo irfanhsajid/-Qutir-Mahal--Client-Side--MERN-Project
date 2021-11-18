@@ -23,8 +23,6 @@ const NavBar = () => {
                             user.email && <Nav.Link className="link-title" as={Link} to='/dashboard'>DASHBOARD</Nav.Link>
 
                         }
-
-                        <Nav.Link className="link-title" as={Link} to='/reveiws'>REVEIWS</Nav.Link>
                         {
                             user?.email ?
                                 <Button onClick={logOut} className="px-3 user-name rounded-1 py-0 mx-2" variant="light"><i class="fas fa-2x fa-sign-out-alt"></i> </Button> :

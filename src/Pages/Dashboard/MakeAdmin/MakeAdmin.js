@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import swal from 'sweetalert';
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
 
@@ -10,19 +10,35 @@ const MakeAdmin = () => {
     }
     const handleAdminSubmit = (e) => {
         const user = { email };
-        fetch('https://hidden-citadel-95408.herokuapp.com/users/admin', {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-        alert('are you sure to make new ADMIN?')
         e.preventDefault();
+        swal({
+            title: "Are you sure?",
+            text: "Once submitted, this user will be successsfully set as admin!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! This user is set as an ADMIN!", {
+                        icon: "success",
+                    });
+                    fetch('https://hidden-citadel-95408.herokuapp.com/users/admin', {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(user)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                        })
+
+                } else {
+                    swal("Operation Unchanged!");
+                }
+            });
     }
     return (
         <div className="text-center">

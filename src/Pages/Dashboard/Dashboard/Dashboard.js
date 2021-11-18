@@ -14,10 +14,10 @@ import DashBoardHome from '../DashboardHome/DashBoardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import MyOrders from '../MyOrders/MyOrders';
 import Payment from '../Payment/Payment';
-import Review from '../Review/Review';
+import AddReview from '../Review/AddReview';
 import AddProduct from '../AddProduct/AddProduct';
 import AdminRoute from '../../Login-Register/AdminRoute/AdminRoute';
-import ManageOrders from '../ManageOrders/ManageOrders';
+import ManageAllOrders from '../ManageOrders/ManageAllOrders';
 import ManageAllProducts from '../ManageAllProducts.js/ManageAllProducts';
 
 const Dashboard = () => {
@@ -29,11 +29,11 @@ const Dashboard = () => {
     return (
 
         <div>
-            <div className="py-3 bg-dark text-light dash-bar">
+            <div className="py-3 text-light dash-bar">
                 <h2 className="ms-4">DASHBOARD</h2>
             </div>
 
-            <div className="row" >
+            <div className="row " >
                 <div className="col-12 col-md-2 dash-left">
                     <ul className="my-5">
                         <li> <i className="fas fa-home me-1"></i> <Link to='/home'>Home</Link> </li>
@@ -64,6 +64,7 @@ const Dashboard = () => {
                     </ul>
                 </div>
                 <div className="col-12 col-md-10 ">
+
                     <div className="dashboard-text mt-5">
                         <Switch>
                             <Route exact path={path}>
@@ -76,7 +77,7 @@ const Dashboard = () => {
                                 <Payment></Payment>
                             </Route>
                             <Route path={`${path}/review`}>
-                                <Review></Review>
+                                <AddReview></AddReview>
                             </Route>
 
                             <AdminRoute path={`${path}/makeAdmin`}>
@@ -88,7 +89,7 @@ const Dashboard = () => {
                                 <AddProduct></AddProduct>
                             </AdminRoute>
                             <AdminRoute path={`${path}/manageOrders`}>
-                                <ManageOrders></ManageOrders>
+                                <ManageAllOrders></ManageAllOrders>
                             </AdminRoute>
                             <AdminRoute path={`${path}/manageProducts`}>
                                 <ManageAllProducts></ManageAllProducts>

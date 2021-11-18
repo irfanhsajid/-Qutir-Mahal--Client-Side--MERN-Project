@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
+import swal from 'sweetalert';
 
-
-const ManageOrders = () => {
+const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
     const [isDeleted, setIsDeleted] = useState(null);
 
@@ -14,21 +14,36 @@ const ManageOrders = () => {
     //delete method 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`https://hidden-citadel-95408.herokuapp.com/deleteOrder/${id}`, {
-            method: "DELETE",
-            headers: { "content-type": "application/json" }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Order!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(result => {
-                // console.log(result.deletedCount)
-                if (result.deletedCount) {
-                    setIsDeleted(true)
-                }
-                else {
-                    setIsDeleted(false)
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! One Order has been deleted!", {
+                        icon: "success",
+                    });
+                    fetch(`https://hidden-citadel-95408.herokuapp.com/deleteOrder/${id}`, {
+                        method: "DELETE",
+                        headers: { "content-type": "application/json" }
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            // console.log(result.deletedCount)
+                            if (result.deletedCount) {
+                                setIsDeleted(true)
+                            }
+                            else {
+                                setIsDeleted(false)
+                            }
+                        });
+                } else {
+                    swal("Order is Unchanged!");
                 }
             });
-        alert('Are You sure to DELETE?');
     };
 
     return (
@@ -66,4 +81,4 @@ const ManageOrders = () => {
     );
 };
 
-export default ManageOrders;
+export default ManageAllOrders;

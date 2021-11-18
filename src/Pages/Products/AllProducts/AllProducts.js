@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { RatingView } from 'react-simple-star-rating';
+import useAuth from '../../Login-Register/Hooks/useAuth';
 import NavBar from '../../Shared/NavBar/NavBar';
 
 const AllProducts = () => {
+    const { isLoading } = useAuth();
     const [products, setProducts] = useState([]);
     useEffect(() => {
         fetch('https://hidden-citadel-95408.herokuapp.com/products')
@@ -12,9 +15,10 @@ const AllProducts = () => {
     }, []);
     return (
         <>
-            <NavBar />
-            <div className="container my-5">
 
+            <NavBar />
+
+            <div className="container my-5">
                 <div data-aos="fade-down-right" data-aos-duration="1000" className="container my-5 text-center">
                     <div className=" my-4">
                         <h2 className="title-bold-text">Trending Potteries And Handmade  Products</h2>
@@ -23,6 +27,9 @@ const AllProducts = () => {
                     </p>
                     <p className="border-bottom d-flex mx-auto border-2 my-3 w-75"></p>
                 </div>
+                {
+                    isLoading && <Spinner animation="border" />
+                }
                 <div className="row g-4 justify-content-center">
                     {
 

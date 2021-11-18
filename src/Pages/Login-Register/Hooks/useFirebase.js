@@ -1,7 +1,7 @@
 import initializeFirebase from "../Firebase/firebase.init";
 import { useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
-
+import swal from 'sweetalert';
 
 // initialize firebase app
 initializeFirebase();
@@ -21,6 +21,7 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
+                swal("Congratulations!", "New User Resistered Successfully!", "success");
                 const newUser = { email, displayName: name }
                 setUser(newUser);
                 //save user to the database
@@ -51,10 +52,8 @@ const useFirebase = () => {
         setIsLoading(true);
         signInWithPopup(auth, googleProvider)
             .then(result => {
-
                 const user = result.user;
                 saveUser(user.email, user.displayName, 'PUT');
-
                 const destination = location?.state?.from || '/';
                 history.replace(destination);
             })
@@ -88,7 +87,7 @@ const useFirebase = () => {
         setIsLoading(true);
         signOut(auth).then(() => {
             // Sign-out successful.
-
+            swal("Done!", "Successfully Logged Out!", "success")
         }).catch((error) => {
             // An error happened.
         })

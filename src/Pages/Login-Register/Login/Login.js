@@ -5,12 +5,12 @@ import './login.css';
 import NavBar from '../../Shared/NavBar/NavBar';
 import useAuth from '../Hooks/useAuth';
 import { Alert, Spinner } from 'react-bootstrap';
+import swal from 'sweetalert';
 const Login = () => {
     const [loginData, setLoginData] = useState({});
     const { user, setUser, loginUser, isLoading, setIsLoading, authError, setAuthError, signInWithGoogle } = useAuth();
     const location = useLocation();
     const history = useHistory();
-
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -30,6 +30,7 @@ const Login = () => {
                 const destination = location.state?.from || "/";
                 history.replace(destination);
                 setAuthError('');
+                swal("Welcome!", "Successfully Logged in!", "success")
             })
             .catch((error) => {
                 setAuthError(error.message);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RatingView } from 'react-simple-star-rating';
-
+import swal from 'sweetalert';
 
 const ManageAllProducts = () => {
     const [products, setProducts] = useState([]);
@@ -13,21 +13,36 @@ const ManageAllProducts = () => {
     //delete method 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`https://hidden-citadel-95408.herokuapp.com/deleteProduct/${id}`, {
-            method: "DELETE",
-            headers: { "content-type": "application/json" }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(result => {
-                // console.log(result.deletedCount)
-                if (result.deletedCount) {
-                    setIsDeleted(true)
-                }
-                else {
-                    setIsDeleted(false)
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! Your Product has been deleted!", {
+                        icon: "success",
+                    });
+                    fetch(`https://hidden-citadel-95408.herokuapp.com/deleteProduct/${id}`, {
+                        method: "DELETE",
+                        headers: { "content-type": "application/json" }
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            // console.log(result.deletedCount)
+                            if (result.deletedCount) {
+                                setIsDeleted(true)
+                            }
+                            else {
+                                setIsDeleted(false)
+                            }
+                        });
+                } else {
+                    swal("Your Product is unchanged!");
                 }
             });
-        alert('Are You sure to DELETE?');
     };
     return (
         <>

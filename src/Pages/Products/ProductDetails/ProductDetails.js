@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import useAuth from '../../Login-Register/Hooks/useAuth';
 import NavBar from '../../Shared/NavBar/NavBar';
+import swal from 'sweetalert';
 import './Details.css'
 import { Spinner } from 'react-bootstrap';
 const ProductDetails = () => {
@@ -25,9 +26,12 @@ const ProductDetails = () => {
             body: JSON.stringify(data),
         })
             .then(res => res.json())
-            .then(result => console.log(result))
+            .then(result => {
+                console.log(result)
+                swal("Thanks!", "You Order is Done!", "success");
+            })
         console.log(data);
-        alert('Your Order is Successfully Done');
+
         reset();
     }
     return (
@@ -61,6 +65,7 @@ const ProductDetails = () => {
                     <div className="order-form" >
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <select {...register("productName", { required: true })} className="px-3 py-2 m-2 w-100">
+                                <option value="Select Product" disabled>Select Product</option>
                                 <option value={detailsInfo[0]?.name}>{detailsInfo[0]?.name}</option>
                             </select>
                             <input
@@ -79,13 +84,13 @@ const ProductDetails = () => {
                             <br />
 
                             <input
-                                {...register("phone")}
+                                {...register("phone", { required: true })}
                                 type="number"
                                 placeholder="Phone Number"
                                 className="px-3 py-2 m-2 w-100"
                             /> <br />
                             <input
-                                {...register("location")}
+                                {...register("location", { required: true })}
                                 placeholder="Receiving Location"
                                 className="px-3 py-2 m-2 w-100"
                             />
