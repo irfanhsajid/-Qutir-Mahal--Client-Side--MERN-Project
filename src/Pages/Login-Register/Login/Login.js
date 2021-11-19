@@ -6,6 +6,7 @@ import NavBar from '../../Shared/NavBar/NavBar';
 import useAuth from '../Hooks/useAuth';
 import { Alert, Spinner } from 'react-bootstrap';
 import swal from 'sweetalert';
+import Footer from '../../Shared/Footer/Footer';
 const Login = () => {
     const [loginData, setLoginData] = useState({});
     const { user, setUser, loginUser, isLoading, setIsLoading, authError, setAuthError, signInWithGoogle } = useAuth();
@@ -44,9 +45,9 @@ const Login = () => {
     return (
         <>
             <NavBar></NavBar>
-            <div className="container mt-5 mb-5">
+            <div className="container login-container">
                 <div className="row justify-content-center align-items-center login-form">
-                    <div className="form-left col-md-5 col-12" data-aos="fade-up-right" data-aos-duration="1000">
+                    <div className="form-left col-md-5 col-12" data-aos="fade-up-right" data-aos-duration="800">
                         <h5 className="text-center fw-bold mb-4">Login first to buy any product</h5>
 
                         {
@@ -82,11 +83,12 @@ const Login = () => {
 
                     </div>
                     <div className="form-right col-md-7 col-12" data-aos="fade-up-left" data-aos-easing="linear"
-                        data-aos-duration="900">
+                        data-aos-duration="700">
                         <img className="img-fluid login-img" src={loginImg} alt="" />
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </>
     );
 };

@@ -28,7 +28,7 @@ const ProductDetails = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result)
-                swal("Thanks!", "You Order is Done!", "success");
+                swal("Thanks For Order!", "You Product is added to Dashboard", "success");
             })
         console.log(data);
 
@@ -65,7 +65,7 @@ const ProductDetails = () => {
                     <div className="order-form" >
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <select {...register("productName", { required: true })} className="px-3 py-2 m-2 w-100">
-                                <option value="Select Product" disabled>Select Product</option>
+                                <option selected disabled>Select Product</option>
                                 <option value={detailsInfo[0]?.name}>{detailsInfo[0]?.name}</option>
                             </select>
                             <input

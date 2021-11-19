@@ -33,7 +33,11 @@ const AddReview = () => {
             <p className="border-bottom border-2 my-3 d-flex mx-auto w-75"></p>
             <div className="review-form form-bg py-2  ">
                 <form className="form-container" onSubmit={handleReviewSubmit}>
-                    <input onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1  " type="text" name="userName" id="" placeholder="Your Name" value={user?.displayName} required /> <br />
+                    <select required onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1" name="userName" id="">
+                        <option selected disabled>Your Name</option>
+                        <option value={user?.displayName}> {user?.displayName} </option>
+                    </select>
+                    <br />
                     <select required onBlur={handleOnBlur} className="px-4 py-2 m-2 border-0  rounded-1" name="productName" id="">
                         <option selected disabled>Product Name</option>
                         <option value="Marble Vase">Marble Vase</option>

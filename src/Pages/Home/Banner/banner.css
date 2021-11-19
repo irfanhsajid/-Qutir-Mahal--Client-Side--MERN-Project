@@ -29,6 +29,19 @@
    border: 2px solid #F84C4C;
    color: white;
 }
+
+@media screen and (max-width:1100px) {
+    .banner-div{
+        left: 15%;
+        bottom: 130px;
+    }
+    .banner-div3{
+        
+        bottom: 40px;
+        right: 300px;
+    }
+}
+
 @media screen and (max-width:700px) {
     .banner-img{
         height: 400px;

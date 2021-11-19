@@ -3,6 +3,7 @@ import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { RatingView } from 'react-simple-star-rating';
 import useAuth from '../../Login-Register/Hooks/useAuth';
+import Footer from '../../Shared/Footer/Footer';
 import NavBar from '../../Shared/NavBar/NavBar';
 
 const AllProducts = () => {
@@ -62,6 +63,7 @@ const AllProducts = () => {
                     }
                 </div>
             </div>
+            <Footer />
         </>
     );
 };
